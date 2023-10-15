@@ -1,0 +1,35 @@
+﻿{
+  "name": "Library",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "isPrimary": true
+    },
+    {
+      "name": "author",
+      "type": "string",
+      "isPrimary": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "isPrimary": false
+    },
+    {
+      "name": "publicationYear",
+      "type": "int",
+      "isPrimary": false
+    },
+    {
+      "name": "cabinetNumber",
+      "type": "int",
+      "isPrimary": false
+    },
+    {
+      "name": "shelfNumber",
+      "type": "int",
+      "isPrimary": false
+    }
+  ]
+}
