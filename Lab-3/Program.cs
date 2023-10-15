@@ -19,10 +19,10 @@ namespace Lab
             for (int j = 1; j <= tableData.fileTableDate.Count - 1; j++)
             {
                 Reader readery = new Reader();
-                if (tableData.fileTableDate[j].Count < 4) { readers.Add(readery.ReaderAddThree(readerData, tableData, j)); }
+                if (tableData.fileTableDate[j].Count < 4) { readers.Add(readery.ReaderAdd(readerData, tableData, j)); }
                 else
                 {
-                    readers.Add(readery.ReaderAddThree(readerData, tableData, j));
+                    readers.Add(readery.ReaderAdd(readerData, tableData, j));
                     readers[readers.Count - 1].DateReturn = new Dictionary<uint, DateTime>
                     {
                         { Convert.ToUInt32(tableData.fileTableDate[j][0]), Convert.ToDateTime(tableData.fileTableDate[j][3]) }
@@ -41,10 +41,10 @@ namespace Lab
             var listData = new List<string[]>();
 
             TableCSV.TakeData(listData, bookData.fileBooks.Count, bookData.fileBooks, new int[] { 1, 2 });
-            TableCSV.TakeData(listData, bookData.fileBooks.Count, readerData.fileReaders, new int[] {  1 });
+            TableCSV.TakeData(listData, bookData.fileBooks.Count, readerData.fileReaders, new int[] {  1, 2 });
             TableCSV.TakeData(listData, bookData.fileBooks.Count, tableData.fileTableDate, new int[] { 2});
-            Reader.Swich(listData, new int[] { 2, 3}, readers, bookData.fileBooks.Count, false);
-            TableCSV.FillData(listData, 4);
+            Reader.Switch(listData, new int[] { 2, 4}, readers, bookData.fileBooks.Count, false);
+            TableCSV.FillData(listData, 3);
             for (int i = 0; i < listData.Count; i++) { maxArr.Add(TableCSV.MaxLenColumn(listData, i)); }
 
             for (int i = 0; i < bookData.fileBooks.Count; i++)

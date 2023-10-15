@@ -20,7 +20,7 @@ namespace Lab
 
         public Dictionary<uint, DateTime> DateReturn { get; set; }
 
-        public Reader ReaderAddThree(ReaderData readerData, TableData tableData, int j)
+        public Reader ReaderAdd(ReaderData readerData, TableData tableData, int j)
         {
             return new Reader()
             {
@@ -63,7 +63,7 @@ namespace Lab
             return arr;
         }
 
-        public static List<string[]> Swich(List<string[]> list, int[] arr, List<Reader> readers, int len, bool status)
+        public static List<string[]> Switch(List<string[]> list, int[] arr, List<Reader> readers, int len, bool status)
         {
             var tempName = Reader.BookReader(readers, len, status);
             var tempDate = Reader.BookReader(readers, len , !status);

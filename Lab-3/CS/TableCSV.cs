@@ -72,7 +72,8 @@ namespace Lab
         public static void PrintRow(List<int> arr, params string[] fileLine)
         {
             var seed = "|";
-            string row = fileLine.Aggregate(seed, (separator, fileLineText) => separator + " " + fileLineText.PadRight(arr[Array.IndexOf(fileLine, fileLineText)]) + " " + seed);
+            string row = fileLine.Aggregate(seed, 
+                (separator, fileLineText) => separator + " " + fileLineText.PadRight(arr[Array.IndexOf(fileLine, fileLineText)]) + " " + seed);
             Console.WriteLine(row);
         }
     }
