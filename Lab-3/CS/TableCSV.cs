@@ -50,7 +50,7 @@ namespace Lab
             for (int j = 0;j < listDate.Count;j++) { setColumns[j] = listDate[j][i]; }
             return setColumns;
         }
-        public static string[] PrintSepLine(List<int> width)
+        public static string[] SetSepLine(List<int> width)
         {
             var arrSep = new string[width.Count];
             for(int i = 0; i < width.Count; i++) { arrSep[i] = new string('-', width[i]); }

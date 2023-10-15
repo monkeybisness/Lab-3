@@ -50,7 +50,7 @@ namespace Lab
             {
                 if(i == 1)
                 {
-                    TableCSV.PrintRow(maxArr, TableCSV.PrintSepLine(maxArr));
+                    TableCSV.PrintRow(maxArr, TableCSV.SetSepLine(maxArr));
                 }
                 TableCSV.PrintRow(maxArr, TableCSV.SetColumns(listData, i ));
             }
