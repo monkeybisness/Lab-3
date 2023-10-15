@@ -40,10 +40,10 @@ namespace Lab
 
             var listData = new List<string[]>();
 
-            TableCSV.TakeData(listData, bookData.fileBooks.Count, bookData.fileBooks, new int[] { 1, 2 });
-            TableCSV.TakeData(listData, bookData.fileBooks.Count, readerData.fileReaders, new int[] {  1, 2 });
+            TableCSV.TakeData(listData, bookData.fileBooks.Count, bookData.fileBooks, new int[] { 1, 2});
+            TableCSV.TakeData(listData, bookData.fileBooks.Count, readerData.fileReaders, new int[] {  1 });
             TableCSV.TakeData(listData, bookData.fileBooks.Count, tableData.fileTableDate, new int[] { 2});
-            Reader.Switch(listData, new int[] { 2, 4}, readers, bookData.fileBooks.Count, false);
+            Reader.Switch(listData, new int[] { 2, 3}, readers, bookData.fileBooks.Count, false);
             TableCSV.FillData(listData, 3);
             for (int i = 0; i < listData.Count; i++) { maxArr.Add(TableCSV.MaxLenColumn(listData, i)); }
 

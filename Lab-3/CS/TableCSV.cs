@@ -14,7 +14,7 @@ namespace Lab
         {
             for (int i = 0; i < listData.Count; i++)
             {
-                for(int j = 0; j < listData.Count; j ++)
+                for(int j = 0; j < 5; j ++)
                 {
                     if (listData[i][j] == null) { listData[i][j] = string.Concat(Enumerable.Repeat(" ", l)); }
                 }
@@ -46,7 +46,7 @@ namespace Lab
         {
             var maxValue = 0;
             var columns = new List<string>();
-            for (int i = 0; i <= file.Count - 1; i++)
+            for (int i = 0; i < 5; i++)
             {
                 columns.Add(file[j][i].Length.ToString());
             }
