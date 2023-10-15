@@ -10,6 +10,17 @@ namespace Lab
     {
         public TableCSV() { }
 
+        public static List<string[]> FillData(List<string[]> listData, int l)
+        {
+            for (int i = 0; i < listData.Count; i++)
+            {
+                for(int j = 0; j < listData.Count; j ++)
+                {
+                    if (listData[i][j] == null) { listData[i][j] = string.Concat(Enumerable.Repeat(" ", l)); }
+                }
+            }
+            return listData;
+        }
         public static List<string[]> TakeData(List<string[]> listData, int i , List<List<string>> file, int[] arr)
         {
             for(int l =  0; l < arr.Length ; l++)
@@ -26,7 +37,8 @@ namespace Lab
             var temp = new string[i];
             for (int j = 0; j < file.Count ; j++)
             {
-                temp[j] = file[j][column];
+                if ((file[j].Count < 4) && (column > 2)) { temp[j] = null; }
+                else { temp[j] = file[j][column]; }
             }
             return temp;
         }
