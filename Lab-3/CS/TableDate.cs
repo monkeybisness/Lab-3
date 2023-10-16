@@ -8,57 +8,57 @@ namespace Lab
 {
     class TableData
     {
-        public TableData(string path) { Path = path; }
+        public TableData(string path, List<List<string>> fileTableDate) { Path = path; FileTableDate = fileTableDate; }
 
         public string Path { get; set; }
 
-        public List<List<string>> fileTableDate = new List<List<string>>();
+        public List<List<string>> FileTableDate { get; set; }
         public void RecordFile()
         {
             string[] arr = File.ReadAllLines(Path);
             for (int i = 0; i < arr.Length; i++)
             {
                 List<string> temp = arr[i].Split(';').ToList();
-                fileTableDate.Add(temp);
+                FileTableDate.Add(temp);
             }
         }
-        public void CheckTypeInt(int j)
+        public void CheckTypeInt(int row)
         {
-            for (int i = 1; i <= 1; i++)
+            for (int column = 1; column <= 1; column++)
             {
-                if (int.TryParse(fileTableDate[j][i], out int valueOne) == false)
+                if (int.TryParse(FileTableDate[row][column], out int valueOne) == false)
                 {
-                    Console.WriteLine($"Тип данных {fileTableDate[j][i]} не совпал с типом {i + 1} столбца TableDate.");
+                    Console.WriteLine($"Тип данных {FileTableDate[row][column]} не совпал с типом {column + 1} столбца TableDate.");
                     Environment.Exit(0);
                 }
             }
         }
-        public void CheckTypeDateTime(int j)
+        public void CheckTypeDateTime(int row)
         {
-            for (int i = 2; i < fileTableDate[j].Count; i++)
+            for (int column = 2; column < FileTableDate[row].Count; column++)
             {
-                if (DateTime.TryParse(fileTableDate[j][i], out DateTime valueTwo) == false)
+                if (DateTime.TryParse(FileTableDate[row][column], out DateTime valueTwo) == false)
                 {
-                    Console.WriteLine($"Тип данных {fileTableDate[j][i]} не совпал с типом {i + 1} столбца TableDate.");
+                    Console.WriteLine($"Тип данных {FileTableDate[row][column]} не совпал с типом {column + 1} столбца TableDate.");
                     Environment.Exit(0);
                 }
             }
         }
-        public void CheckLength(int i)
+        public void CheckLengthRow(int row)
         {
-            if (fileTableDate[0].Count < fileTableDate[i].Count)
+            if (FileTableDate[0].Count < FileTableDate[row].Count)
             {
                 Console.WriteLine("Данных больше ,чем столбцов в таблице TableDate.");
                 Environment.Exit(0);
             }
         }
 
-        public void CheckFile()
+        public void CheckData()
         {
             RecordFile();
-            for (int j = 1; j < fileTableDate.Count - 1; j++)
+            for (int j = 1; j < FileTableDate.Count - 1; j++)
             {
-                CheckLength(j);
+                CheckLengthRow(j);
                 CheckTypeInt(j);
                 CheckTypeDateTime(j);
             }

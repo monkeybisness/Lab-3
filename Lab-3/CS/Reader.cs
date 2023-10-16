@@ -20,42 +20,40 @@ namespace Lab
 
         public Dictionary<uint, DateTime> DateReturn { get; set; }
 
-        public Reader ReaderAdd(ReaderData readerData, TableData tableData, int j)
+        public Reader ReaderAdd(ReaderData readerData, TableData tableData, int row)
         {
             return new Reader()
             {
-                Id = Convert.ToUInt32(readerData.fileReaders[j][0]),
+                Id = Convert.ToUInt32(readerData.FileReaders[row][0]),
 
-                FullName = readerData.fileReaders[j][1],
+                FullName = readerData.FileReaders[row][1],
 
-                ReaderTicket = Convert.ToUInt32(readerData.fileReaders[j][2]),
+                ReaderTicket = Convert.ToUInt32(readerData.FileReaders[row][2]),
 
                 DateCapture = new Dictionary<uint, DateTime>
                 {
-                    { Convert.ToUInt32(tableData.fileTableDate[j][0]), Convert.ToDateTime(tableData.fileTableDate[j][2])}
+                    { Convert.ToUInt32(tableData.FileTableDate[row][0]), Convert.ToDateTime(tableData.FileTableDate[row][2])}
                 },
 
-                DateReturn = new Dictionary<uint, DateTime> { },
+                DateReturn = new Dictionary<uint, DateTime> { }
             };
         }
-        public static string[] BookReader(List<Reader> readers, int i, bool status)
+        public static string[] SortedReaderAndDate(List<Reader> readers, int length, bool typeSwitch)
         {
-            var arr = new string[i];
-            int count = 1;
-            if (status)
+            var arr = new string[length];
+            if (typeSwitch)
                 Array.Fill<string>(arr, " ");
             else { Array.Fill<string>(arr, ""); }
             foreach (Reader reader in readers)
             {
-                for (uint j = 1; j < i; j++)
+                for (uint j = 1; j < length; j++)
                 {
                     if ((reader.DateCapture.ContainsKey(j) && !reader.DateReturn.ContainsKey(j)) && (j > 0))
                     {
-                        if (!status)
+                        if (!typeSwitch)
                             arr[j] = reader.FullName;
                         else
                             arr[j] = reader.DateCapture[j].ToString("d", CultureInfo.GetCultureInfo("fr-FR"));
-                        count++;
                         break;
                     }
                 }
@@ -63,19 +61,19 @@ namespace Lab
             return arr;
         }
 
-        public static List<string[]> Switch(List<string[]> list, int[] arr, List<Reader> readers, int len, bool status)
+        public static List<string[]> СhangeArrayData(List<string[]> listData, int[] arrayColumn, List<Reader> readers, int length, bool typeSwitch)
         {
-            var tempName = Reader.BookReader(readers, len, status);
-            var tempDate = Reader.BookReader(readers, len , !status);
-            for (int j = 1; j < list[arr[0]].Length; j++)
+            var tempName = Reader.SortedReaderAndDate(readers, length, typeSwitch);
+            var tempDate = Reader.SortedReaderAndDate(readers, length, !typeSwitch);
+            for (int j = 1; j < listData[arrayColumn[0]].Length; j++)
             {
-                list[arr[0]][j] = tempName[j];
+                listData[arrayColumn[0]][j] = tempName[j];
             }
-            for (int j = 1; j < list[arr[1]].Length; j++)
+            for (int j = 1; j < listData[arrayColumn[1]].Length; j++)
             {
-                list[arr[1]][j] = tempDate[j];
+                listData[arrayColumn[1]][j] = tempDate[j];
             }
-            return list;
+            return listData;
         }
 
     }

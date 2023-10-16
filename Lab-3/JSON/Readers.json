@@ -15,6 +15,16 @@
       "name": "readerTicket",
       "type": "int",
       "isPrimary": false
+    },
+    {
+      "name": "dateCapture",
+      "type": "datetime",
+      "isPrimary": false
+    },
+    {
+      "name": "dateReturn",
+      "type": "datetime",
+      "isPrimary": false
     }
   ]
 }

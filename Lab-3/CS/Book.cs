@@ -21,21 +21,21 @@ namespace Lab
 
         public uint ShelfNumber { get; set; }
 
-        public Book BooksAdd(BookData bookData, int i)
+        public Book BooksAdd(BookData bookData, int row)
         {
             return new Book
             {
-                Id = Convert.ToUInt32(bookData.fileBooks[i][0]),
+                Id = Convert.ToUInt32(bookData.FileBooks[row][0]),
 
-                Author = bookData.fileBooks[i][1],
+                Author = bookData.FileBooks[row][1],
 
-                Title = bookData.fileBooks[i][2],
+                Title = bookData.FileBooks[row][2],
 
-                PublicationYear = Convert.ToUInt32(bookData.fileBooks[i][3]),
+                PublicationYear = Convert.ToUInt32(bookData.FileBooks[row][3]),
 
-                CabinetNumber = Convert.ToUInt32(bookData.fileBooks[i][4]),
+                CabinetNumber = Convert.ToUInt32(bookData.FileBooks[row][4]),
 
-                ShelfNumber = Convert.ToUInt32(bookData.fileBooks[i][5]),
+                ShelfNumber = Convert.ToUInt32(bookData.FileBooks[row][5]),
             };
 
         }
