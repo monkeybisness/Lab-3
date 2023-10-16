@@ -38,7 +38,7 @@ namespace Lab
                 DateReturn = new Dictionary<uint, DateTime> { }
             };
         }
-        public static string[] SortedReadersAndDates(List<Reader> readers, int length, bool typeSwitch)
+        public static string[] SortedReadersOrDates(List<Reader> readers, int length, bool typeSwitch)
         {
             var arr = new string[length];
             if (typeSwitch)
@@ -63,8 +63,8 @@ namespace Lab
 
         public static List<string[]> СhangeArrayData(List<string[]> listData, int[] arrayColumn, List<Reader> readers, int length, bool typeSwitch)
         {
-            var tempName = Reader.SortedReadersAndDates(readers, length, typeSwitch);
-            var tempDate = Reader.SortedReadersAndDates(readers, length, !typeSwitch);
+            var tempName = Reader.SortedReadersOrDates(readers, length, typeSwitch);
+            var tempDate = Reader.SortedReadersOrDates(readers, length, !typeSwitch);
             for (int j = 1; j < listData[arrayColumn[0]].Length; j++)
             {
                 listData[arrayColumn[0]][j] = tempName[j];
