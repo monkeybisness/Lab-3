@@ -6,13 +6,13 @@ namespace Lab
     {
         void Initialize()
         {
-            BookData bookData = new BookData("C:\\Users\\User\\source\\repos\\Lab-2\\Lab-2\\Books\\Books.csv", new List<List<string>>());
+            BookData bookData = new BookData("C:\\Users\\User\\source\\repos\\Lab-3\\Lab-3\\CSV\\Books.csv", new List<List<string>>());
             bookData.CheckData();
 
-            ReaderData readerData = new ReaderData("C:\\Users\\User\\source\\repos\\Lab-2\\Lab-2\\Readers\\Readers.csv", new List<List<string>>());
+            ReaderData readerData = new ReaderData("C:\\Users\\User\\source\\repos\\Lab-3\\Lab-3\\CSV\\Readers.csv", new List<List<string>>());
             readerData.CheckData();
 
-            TableData tableData = new TableData("C:\\Users\\User\\source\\repos\\Lab-2\\Lab-2\\TableDate\\TableDate.csv", new List<List<string>>());
+            TableData tableData = new TableData("C:\\Users\\User\\source\\repos\\Lab-3\\Lab-3\\CSV\\TableDate.csv", new List<List<string>>());
             tableData.CheckData();
 
             List<Reader> readers = new List<Reader>();
