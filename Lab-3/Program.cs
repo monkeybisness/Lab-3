@@ -19,7 +19,10 @@ namespace Lab
             for (int i = 1; i <= tableData.FileTableDate.Count - 1; i++)
             {
                 Reader readery = new Reader();
-                if (tableData.FileTableDate[i].Count < 4) { readers.Add(readery.ReaderAdd(readerData, tableData, i)); }
+                if (tableData.FileTableDate[i].Count < 4) 
+                {
+                    readers.Add(readery.ReaderAdd(readerData, tableData, i)); 
+                }
                 else
                 {
                     readers.Add(readery.ReaderAdd(readerData, tableData, i));
@@ -40,20 +43,29 @@ namespace Lab
 
             var listData = new List<string[]>();
 
-            TableCSV.TakeArrayData(listData, bookData.FileBooks.Count, bookData.FileBooks, new int[] { 1, 2});
-            TableCSV.TakeArrayData(listData, bookData.FileBooks.Count, readerData.FileReaders, new int[] {  1});
-            TableCSV.TakeArrayData(listData, bookData.FileBooks.Count, tableData.FileTableDate, new int[] { 2}); 
+            TableCSV.AddArraysDataToList(listData, bookData.FileBooks.Count, bookData.FileBooks, new int[] { 1, 2});
+
+            TableCSV.AddArraysDataToList(listData, bookData.FileBooks.Count, readerData.FileReaders, new int[] {  1});
+
+            TableCSV.AddArraysDataToList(listData, bookData.FileBooks.Count, tableData.FileTableDate, new int[] { 2}); 
+
             Reader.СhangeArrayData(listData, new int[] { 2, 3}, readers, bookData.FileBooks.Count, false);
-            for(int i = 0; i < listData.Count; i++) { TableCSV.FillEmptyData(listData, i); }
-            for (int i = 0; i < listData.Count; i++) { arrayMaxWidth.Add(TableCSV.MaxWidthColumn(listData, i)); }
+            for(int i = 0; i < listData.Count; i++) 
+            {
+                TableCSV.FillEmptyData(listData, i); 
+            }
+            for (int i = 0; i < listData.Count; i++) 
+            {
+                arrayMaxWidth.Add(TableCSV.GetMaxWidthColumn(listData, i)); 
+            }
 
             for (int i = 0; i < bookData.FileBooks.Count; i++)
             {
                 if(i == 1)
                 {
-                    TableCSV.PrintRow(arrayMaxWidth, TableCSV.SetSepColumn(arrayMaxWidth));
+                    TableCSV.PrintRow(arrayMaxWidth, TableCSV.TakeArraySeparator(arrayMaxWidth));
                 }
-                TableCSV.PrintRow(arrayMaxWidth, TableCSV.SetColumn(listData, i ));
+                TableCSV.PrintRow(arrayMaxWidth, TableCSV.TakeArrayRow(listData, i ));
             }
         }
         public static void Main(string[] args)

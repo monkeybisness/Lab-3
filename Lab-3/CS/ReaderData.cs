@@ -8,7 +8,11 @@ namespace Lab
 {
     class ReaderData
     {
-        public ReaderData(string path, List<List<string>> fileReaders) { Path = path; FileReaders = fileReaders; }
+        public ReaderData(string path, List<List<string>> fileReaders) 
+        { 
+            Path = path; 
+            FileReaders = fileReaders; 
+        }
 
         public string Path { get; set; }
 

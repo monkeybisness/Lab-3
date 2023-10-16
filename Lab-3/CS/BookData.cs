@@ -8,7 +8,11 @@ namespace Lab
 {
     class BookData
     {
-        public BookData(string path, List<List<string>> fileBooks) { Path = path; FileBooks = fileBooks; }
+        public BookData(string path, List<List<string>> fileBooks)
+        {
+            Path = path; 
+            FileBooks = fileBooks; 
+        }
 
         public string Path { get; set; }
 
@@ -47,7 +51,10 @@ namespace Lab
             {
                 CheckLengthRow(i);
                 CheckTypeInt(i, 0);
-                for (int j = 3; j <= FileBooks[i].Count - 1; j++) { CheckTypeInt(i, j); }
+                for (int j = 3; j <= FileBooks[i].Count - 1; j++) 
+                {
+                    CheckTypeInt(i, j); 
+                }
             }
         }
     }

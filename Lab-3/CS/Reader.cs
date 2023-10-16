@@ -43,7 +43,9 @@ namespace Lab
             var arr = new string[length];
             if (typeSwitch)
                 Array.Fill<string>(arr, " ");
-            else { Array.Fill<string>(arr, ""); }
+            else 
+                Array.Fill<string>(arr, ""); 
+            
             foreach (Reader reader in readers)
             {
                 for (uint j = 1; j < length; j++)
@@ -64,7 +66,9 @@ namespace Lab
         public static List<string[]> СhangeArrayData(List<string[]> listData, int[] arrayColumn, List<Reader> readers, int length, bool typeSwitch)
         {
             var tempName = Reader.SortedReadersOrDates(readers, length, typeSwitch);
+
             var tempDate = Reader.SortedReadersOrDates(readers, length, !typeSwitch);
+
             for (int j = 1; j < listData[arrayColumn[0]].Length; j++)
             {
                 listData[arrayColumn[0]][j] = tempName[j];
